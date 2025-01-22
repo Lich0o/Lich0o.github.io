@@ -30,6 +30,7 @@
             font-weight: bold;
         }
         nav a:hover {
+            color: #ff6600;
             text-decoration: underline;
         }
         section {
@@ -53,6 +54,12 @@
         .service h3 {
             color: #004080;
         }
+        .service ul li {
+            color: #333;
+        }
+        .service ul li strong {
+            color: #33cc33;
+        }
         footer {
             background: #004080;
             color: #fff;
@@ -61,6 +68,18 @@
             position: fixed;
             bottom: 0;
             width: 100%;
+        }
+        button {
+            background-color: #ff6600;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        button:hover {
+            background-color: #e55b00;
         }
         @media (max-width: 768px) {
             .service {
@@ -72,7 +91,7 @@
 <body>
     <header>
         <h1>Soluciones Industriales en la Nube</h1>
-        <p>Potenciamos la automatización industrial con Azure y AWS</p>
+        <p>Potenciamos la automatización industrial remota</p>
     </header>
     <nav>
         <a href="#services">Servicios</a>
@@ -83,49 +102,23 @@
         <h2>Nuestros Servicios</h2>
         <div class="services">
             <div class="service">
-                <h3>Integración de Azure IoT</h3>
-                <p>Conectamos tus equipos industriales a la nube utilizando Azure IoT para recopilar y analizar datos en tiempo real.</p>
+                <h3>Soluciones IoT para la Industria</h3>
+                <p>Ofrecemos soluciones integrales para integrar tus sistemas industriales con la nube utilizando tecnologías modernas.</p>
                 <ul>
-                    <li>Despliegue de IoT Hub</li>
-                    <li>Configuración de dispositivos IoT Edge</li>
-                    <li>Visualización de datos en Azure Dashboard</li>
+                    <li><strong>Conexión de equipos industriales a la nube:</strong> PLC`S Siemens, Schneider, Delta y más.</li>
+                    <li><strong>Almacenamiento y procesamiento de datos:</strong> Gestión de bases de datos para análisis avanzado.</li>
+                    <li><strong>Dashboards personalizados:</strong> Diseño de interfaces web dinámicas.</li>
+                    <li><strong>Consultoría y soporte técnico:</strong> Evaluación e implementación de proyectos IoT industriales y domótica.</li>
                 </ul>
             </div>
             <div class="service">
-                <h3>Soluciones con AWS</h3>
-                <p>Implementamos servicios de AWS para gestionar y optimizar tus operaciones industriales.</p>
+                <h3>Beneficios</h3>
                 <ul>
-                    <li>Implementación de AWS IoT Core</li>
-                    <li>Procesamiento de datos con Lambda y Kinesis</li>
-                    <li>Almacenamiento seguro con S3 y RDS</li>
+                    <li><strong>Monitoreo remoto:</strong> Accede a datos desde cualquier dispositivo conectado a Internet.</li>
+                    <li><strong>Toma de decisiones informada:</strong> Analiza datos en tiempo real para optimizar procesos.</li>
+                    <li><strong>Escalabilidad:</strong> Soluciones adaptables a las necesidades futuras de tu industria.</li>
                 </ul>
-            </div>
-            <div class="service">
-                <h3>Mantenimiento Predictivo</h3>
-                <p>Utilizamos inteligencia artificial en la nube para prever fallos y reducir tiempos muertos.</p>
-                <ul>
-                    <li>Modelos de machine learning en Azure ML</li>
-                    <li>Análisis de tendencias con AWS SageMaker</li>
-                    <li>Notificaciones en tiempo real</li>
-                </ul>
-            </div>
-            <div class="service">
-                <h3>Dashboards Personalizados</h3>
-                <p>Diseñamos paneles interactivos para monitorear tus procesos desde cualquier lugar.</p>
-                <ul>
-                    <li>Integración con Power BI y QuickSight</li>
-                    <li>Reportes automáticos</li>
-                    <li>Control en tiempo real</li>
-                </ul>
-            </div>
-            <div class="service">
-                <h3>Consultoría en Migración</h3>
-                <p>Te ayudamos a trasladar tus sistemas industriales a la nube de forma eficiente y segura.</p>
-                <ul>
-                    <li>Evaluación de infraestructura actual</li>
-                    <li>Planificación de la migración</li>
-                    <li>Soporte post-migración</li>
-                </ul>
+                <button onclick="location.href='graficos.html'">Ver Ejemplos de Gráficos</button>
             </div>
         </div>
     </section>
@@ -136,8 +129,9 @@
     <section id="contact">
         <h2>Contacto</h2>
         <p>¿Interesado en trabajar con nosotros? Contáctanos:</p>
-        <p>Email: <a href="mailto:info@solucionesnube.com">info@solucionesnube.com</a></p>
-        <p>Teléfono: +56 9 1234 5678</p>
+        <p>Email: <a href="mailto:galindbenjamin@gmail.com">galindbenjamin@gmail.com</a></p>
+        <p>Teléfono: +56 9 51193701</p>
+        <button onclick="window.location.href='mailto:galindbenjamin@gmail.com'">Escríbenos</button>
     </section>
     <footer>
         <p>&copy; 2025 Soluciones Industriales en la Nube. Todos los derechos reservados.</p>
