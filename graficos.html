@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejemplos de Gráficos</title>
+    <title>Ejemplos de Gráficos con Chart.js</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
@@ -19,16 +19,14 @@
             padding: 1rem;
         }
         .chart-container {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+            gap: 1rem;
             padding: 2rem;
         }
         .chart {
-            width: 300px;
+            width: 100%;
             height: 300px;
-            margin: 1rem;
         }
     </style>
 </head>
@@ -56,30 +54,41 @@
         <div class="chart">
             <canvas id="polarChart"></canvas>
         </div>
-        <div class="chart">
-            <canvas id="bubbleChart"></canvas>
-        </div>
-        <div class="chart">
-            <canvas id="scatterChart"></canvas>
-        </div>
-        <div class="chart">
-            <canvas id="horizontalBarChart"></canvas>
-        </div>
     </div>
     <script>
+        // Variables para el tiempo y los datos
+        let time = 0; // Variable para iterar el tiempo en segundos
+
+        // Generación de datos usando seno y coseno
+        function generateSineCosineData(time) {
+            return {
+                sine: Math.sin(time) * 100,
+                cosine: Math.cos(time) * 100
+            };
+        }
+
         // Gráfico de Líneas
         const lineCtx = document.getElementById('lineChart').getContext('2d');
-        new Chart(lineCtx, {
+        const lineChart = new Chart(lineCtx, {
             type: 'line',
             data: {
-                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'],
-                datasets: [{
-                    label: 'Producción Mensual',
-                    data: [65, 59, 80, 81, 56],
-                    borderColor: '#0066cc',
-                    borderWidth: 2,
-                    fill: false
-                }]
+                labels: [],
+                datasets: [
+                    {
+                        label: 'Seno',
+                        data: [], // Datos iniciales
+                        borderColor: '#0066cc',
+                        borderWidth: 2,
+                        fill: false
+                    },
+                    {
+                        label: 'Coseno',
+                        data: [], // Datos iniciales
+                        borderColor: '#ff6600',
+                        borderWidth: 2,
+                        fill: false
+                    }
+                ]
             },
             options: {
                 responsive: true
@@ -88,48 +97,22 @@
 
         // Gráfico de Barras
         const barCtx = document.getElementById('barChart').getContext('2d');
-        new Chart(barCtx, {
+        const barChart = new Chart(barCtx, {
             type: 'bar',
             data: {
                 labels: ['Proceso A', 'Proceso B', 'Proceso C'],
-                datasets: [{
-                    label: 'Rendimiento (%)',
-                    data: [70, 85, 90],
-                    backgroundColor: ['#ff6600', '#33cc33', '#0066cc']
-                }]
-            },
-            options: {
-                responsive: true
-            }
-        });
-
-        // Gráfico de Progreso
-        const progressCtx = document.getElementById('progressChart').getContext('2d');
-        new Chart(progressCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Progreso', 'Restante'],
-                datasets: [{
-                    data: [75, 25],
-                    backgroundColor: ['#33cc33', '#f4f4f4']
-                }]
-            },
-            options: {
-                responsive: true,
-                cutout: '70%'
-            }
-        });
-
-        // Gráfico de Pastel
-        const pieCtx = document.getElementById('pieChart').getContext('2d');
-        new Chart(pieCtx, {
-            type: 'pie',
-            data: {
-                labels: ['A', 'B', 'C'],
-                datasets: [{
-                    data: [30, 50, 20],
-                    backgroundColor: ['#ff9999', '#66b3ff', '#99ff99']
-                }]
+                datasets: [
+                    {
+                        label: 'Valor Seno',
+                        data: [0, 0, 0], // Datos iniciales
+                        backgroundColor: ['#ff6600', '#33cc33', '#0066cc']
+                    },
+                    {
+                        label: 'Valor Coseno',
+                        data: [0, 0, 0], // Datos iniciales
+                        backgroundColor: ['#ff0000', '#00cc99', '#0000ff']
+                    }
+                ]
             },
             options: {
                 responsive: true
@@ -138,13 +121,13 @@
 
         // Gráfico de Radar
         const radarCtx = document.getElementById('radarChart').getContext('2d');
-        new Chart(radarCtx, {
+        const radarChart = new Chart(radarCtx, {
             type: 'radar',
             data: {
                 labels: ['Fuerza', 'Velocidad', 'Resistencia', 'Agilidad', 'Técnica'],
                 datasets: [{
                     label: 'Desempeño',
-                    data: [65, 59, 90, 81, 56],
+                    data: [0, 0, 0, 0, 0], // Datos iniciales
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 2
@@ -157,12 +140,12 @@
 
         // Gráfico Polar
         const polarCtx = document.getElementById('polarChart').getContext('2d');
-        new Chart(polarCtx, {
+        const polarChart = new Chart(polarCtx, {
             type: 'polarArea',
             data: {
                 labels: ['Rojo', 'Azul', 'Verde'],
                 datasets: [{
-                    data: [11, 16, 7],
+                    data: [0, 0, 0], // Datos iniciales
                     backgroundColor: ['#ff9999', '#66b3ff', '#99ff99']
                 }]
             },
@@ -171,65 +154,42 @@
             }
         });
 
-        // Gráfico de Burbuja
-        const bubbleCtx = document.getElementById('bubbleChart').getContext('2d');
-        new Chart(bubbleCtx, {
-            type: 'bubble',
-            data: {
-                datasets: [{
-                    label: 'Población',
-                    data: [
-                        {x: 10, y: 20, r: 5},
-                        {x: 15, y: 10, r: 10},
-                        {x: 20, y: 30, r: 15}
-                    ],
-                    backgroundColor: 'rgba(255, 99, 132, 0.5)'
-                }]
-            },
-            options: {
-                responsive: true
-            }
-        });
+        // Función para actualizar los gráficos
+        function updateCharts() {
+            const { sine, cosine } = generateSineCosineData(time);
 
-        // Gráfico de Dispersión
-        const scatterCtx = document.getElementById('scatterChart').getContext('2d');
-        new Chart(scatterCtx, {
-            type: 'scatter',
-            data: {
-                datasets: [{
-                    label: 'Relación X-Y',
-                    data: [
-                        {x: 10, y: 20},
-                        {x: 15, y: 25},
-                        {x: 20, y: 30}
-                    ],
-                    backgroundColor: '#33cc33'
-                }]
-            },
-            options: {
-                responsive: true
+            // Actualización del gráfico de líneas
+            lineChart.data.labels.push(`T${time}`);
+            lineChart.data.datasets[0].data.push(sine);
+            lineChart.data.datasets[1].data.push(cosine);
+            if (lineChart.data.labels.length > 10) {
+                lineChart.data.labels.shift(); // Eliminar la etiqueta más antigua
+                lineChart.data.datasets[0].data.shift();
+                lineChart.data.datasets[1].data.shift();
             }
-        });
 
-        // Gráfico de Barras Horizontales
-        const horizontalBarCtx = document.getElementById('horizontalBarChart').getContext('2d');
-        new Chart(horizontalBarCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Categoria A', 'Categoria B', 'Categoria C'],
-                datasets: [{
-                    label: 'Cantidad',
-                    data: [15, 25, 35],
-                    backgroundColor: ['#4caf50', '#2196f3', '#ff9800']
-                }]
-            },
-            options: {
-                responsive: true,
-                indexAxis: 'y'
-            }
-        });
-        
-        
+            // Actualización del gráfico de barras
+            barChart.data.datasets[0].data = [sine, cosine, sine];
+            barChart.data.datasets[1].data = [cosine, sine, cosine];
+
+            // Actualización del gráfico de radar
+            radarChart.data.datasets[0].data = [sine, cosine, sine, cosine, sine];
+
+            // Actualización del gráfico polar
+            polarChart.data.datasets[0].data = [sine, cosine, sine];
+
+            // Actualizar los gráficos
+            lineChart.update();
+            barChart.update();
+            radarChart.update();
+            polarChart.update();
+
+            // Incrementar el tiempo
+            time++;
+        }
+
+        // Configuración para actualizar los gráficos cada segundo
+        setInterval(updateCharts, 1000); // Ejecutar la función cada 1000 ms (1 segundo)
     </script>
     <footer>
         <button onclick="window.location.href='index.html'" style="margin: 1rem; padding: 0.5rem 1rem; font-size: 16px; background-color: #004080; color: white; border: none; cursor: pointer;">Volver al Inicio</button>
