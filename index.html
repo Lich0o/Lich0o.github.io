@@ -1,150 +1,353 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soluciones Industriales en la Nube</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        header {
-            background: #004080;
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-        }
-        nav {
-            background: #0066cc;
-            display: flex;
-            justify-content: center;
-            padding: 0.5rem 0;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 1rem;
-            font-weight: bold;
-        }
-        nav a:hover {
-            color: #ff6600;
-            text-decoration: underline;
-        }
-        section {
-            padding: 2rem;
-            text-align: center;
-        }
-        .services {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .service {
-            background: #f4f4f4;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            margin: 1rem;
-            padding: 1.5rem;
-            width: 300px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .service h3 {
-            color: #004080;
-        }
-        .service ul li {
-            color: #333;
-        }
-        .service ul li strong {
-            color: #33cc33;
-        }
-        footer {
-            background: #004080;
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        button {
-            background-color: #ff6600;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        button:hover {
-            background-color: #e55b00;
-        }
-        @media (max-width: 768px) {
-            .service {
-                width: 90%;
+    <title>Sentrix AI - Monitoreo Industrial Inteligente</title>
+    
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuración de Tailwind y Fuentes -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'industrial-blue': {
+                            DEFAULT: '#2C3E50', // Azul oscuro principal
+                            '800': '#1F2D3A', // Más oscuro
+                            '900': '#1A2531', // Aún más oscuro (para footer)
+                            'light': '#34495E', // Un tono más claro
+                        },
+                        'industrial-accent': {
+                            DEFAULT: '#F39C12', // Naranja/Amarillo acento
+                            'dark': '#E67E22', // Naranja más oscuro
+                        },
+                        'alert-critical': '#E74C3C', // Rojo para alertas
+                        'alert-warning': '#F1C40F', // Amarillo para advertencias
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                    }
+                }
             }
+        }
+    </script>
+    
+    <!-- Carga de Fuente Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Estilo para suavizar el scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Pequeño degradado sutil en la cabecera */
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(44, 62, 80, 0.95) 0%, rgba(31, 45, 58, 1) 100%);
         }
     </style>
 </head>
-<body>
-    <header>
-        <h1>Soluciones Industriales en la Nube</h1>
-        <p>Potenciamos la automatización industrial remota</p>
-    </header>
-    <nav>
-        <a href="#services">Servicios</a>
-        <a href="#about">Sobre Nosotros</a>
-        <a href="#contact">Contacto</a>
-    </nav>
-    <section id="services">
-        <h2>Nuestros Servicios</h2>
-        <div class="services">
-            <div class="service">
-                <h3>Soluciones IoT para la Industria</h3>
-                <p>Ofrecemos soluciones integrales para integrar tus sistemas industriales con la nube utilizando tecnologías modernas.</p>
-                <ul>
-                    <li><strong>Conexión de equipos industriales a la nube:</strong> PLC`S Siemens, Schneider, Delta y más.</li>
-                    <li><strong>Almacenamiento y procesamiento de datos:</strong> Gestión de bases de datos para análisis avanzado.</li>
-                    <li><strong>Dashboards personalizados:</strong> Diseño de interfaces web dinámicas.</li>
-                    <li><strong>Consultoría y soporte técnico:</strong> Evaluación e implementación de proyectos IoT industriales y domótica.</li>
-                </ul>
+
+<body class="bg-gray-100 text-gray-900 antialiased font-sans">
+
+    <!-- Header / Navegación -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-industrial-blue-800">
+                Sentrix AI
             </div>
-            <div class="service">
-                <h3>Beneficios</h3>
-                <ul>
-                    <li><strong>Monitoreo remoto:</strong> Accede a datos desde cualquier dispositivo conectado a Internet.</li>
-                    <li><strong>Toma de decisiones informada:</strong> Analiza datos en tiempo real para optimizar procesos.</li>
-                    <li><strong>Escalabilidad:</strong> Soluciones adaptables a las necesidades futuras de tu industria.</li>
-                </ul>
-                <button onclick="location.href='graficos.html'">Ver Ejemplos de Gráficos</button>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#problema" class="text-gray-600 hover:text-industrial-blue transition">El Problema</a>
+                <a href="#solucion" class="text-gray-600 hover:text-industrial-blue transition">Nuestra Solución</a>
+                <a href="#servicios" class="text-gray-600 hover:text-industrial-blue transition">Servicios</a>
+                <a href="#demo" class="bg-industrial-accent text-industrial-blue-900 font-bold px-4 py-2 rounded-lg text-sm hover:bg-industrial-accent-dark transition">
+                    Solicitar Demo
+                </a>
+            </nav>
+            <div class="md:hidden">
+                <!-- Botón de menú móvil (opcional) -->
+                <i data-lucide="menu" class="w-6 h-6 text-gray-700"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección 1: Cabecera (Hero) -->
+    <section class="hero-gradient text-white py-24 md:py-32">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                Anticípese a las Fallas de su Planta.
+                <br class="hidden md:block">
+                No Solo Reaccione a Ellas.
+            </h1>
+            <p class="text-xl md:text-2xl font-light text-gray-200 mb-10 max-w-3xl mx-auto">
+                Convertimos el "ruido" de sus sensores y sistemas SCADA en inteligencia de mantenimiento. Reciba diagnósticos de IA, alertas críticas que importan y reportes PDF automáticos en su email.
+            </p>
+            <a href="#demo" class="bg-industrial-accent text-industrial-blue-900 font-bold py-4 px-10 rounded-lg text-lg hover:bg-yellow-600 transition shadow-xl transform hover:scale-105">
+                Solicitar una Demo Gratuita
+            </a>
+        </div>
+    </section>
+
+    <!-- Sección 2: El Problema (Agitar el Dolor) -->
+    <section id="problema" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-industrial-blue-800 mb-4">¿Cansado de la fatiga de alarmas y el mantenimiento reactivo?</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Su equipo de mantenimiento merece herramientas que filtren el ruido y muestren lo que realmente importa.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Problema 1 -->
+                <div class="bg-gray-50 p-8 rounded-lg shadow-lg border border-gray-200">
+                    <div class="flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-6">
+                        <i data-lucide="volume-x" class="w-8 h-8 text-alert-critical"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-industrial-blue-800 mb-3">Sobrecarga de Datos</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Miles de *tags* y datos en su SCADA o Historian, pero ninguna *información* clara para tomar decisiones. ¿Qué alarma es realmente crítica?
+                    </p>
+                </div>
+                <!-- Problema 2 -->
+                <div class="bg-gray-50 p-8 rounded-lg shadow-lg border border-gray-200">
+                    <div class="flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-6">
+                        <i data-lucide="alert-triangle" class="w-8 h-8 text-alert-critical"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-industrial-blue-800 mb-3">Paradas No Planificadas</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        El mantenimiento reactivo ("apagar incendios") cuesta tiempo y miles de dólares en producción perdida cuando una máquina falla inesperadamente.
+                    </p>
+                </div>
+                <!-- Problema 3 -->
+                <div class="bg-gray-50 p-8 rounded-lg shadow-lg border border-gray-200">
+                    <div class="flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-6">
+                        <i data-lucide="file-input" class="w-8 h-8 text-alert-critical"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-industrial-blue-800 mb-3">Informes Manuales en Excel</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Horas perdidas cada semana compilando manualmente informes de rendimiento, fallas y disponibilidad para la gerencia.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
-    <section id="about">
-        <h2>Sobre Nosotros</h2>
-        <p>
-            Somos una empresa especializada en brindar soluciones tecnológicas avanzadas para la visualización de datos industriales.
-            Utilizamos herramientas de última generación para integrar sistemas de monitoreo remoto que facilitan la supervisión 
-            y el análisis de procesos en tiempo real, mejorando la eficiencia operativa.
-        </p>
-        <p>
-            Nuestra plataforma está diseñada para adaptarse a diversas necesidades industriales, ofreciendo una interfaz intuitiva y 
-            capacidades escalables que permiten tomar decisiones fundamentadas y oportunas.
-        </p>
+
+    <!-- Sección 3: La Solución (Presentar el Producto) -->
+    <section id="solucion" class="py-20 bg-industrial-blue-800 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                Le presentamos `Sentrix AI`
+            </h2>
+            <h3 class="text-2xl md:text-3xl font-light text-industrial-accent mb-6">
+                El Copiloto del Jefe de Mantenimiento
+            </h3>
+            <p class="text-lg text-gray-200 max-w-3xl mx-auto mb-8">
+                `Sentrix AI` es un servicio de monitoreo inteligente que se conecta de forma segura a sus sistemas industriales (PLC, SCADA, Sensores IIoT). Actuamos como un analista de datos experto 24/7 que vigila sus activos críticos.
+            </p>
+            <div class="bg-industrial-blue-900 border-l-4 border-industrial-accent p-6 rounded-lg max-w-4xl mx-auto text-left shadow-2xl">
+                <h4 class="text-2xl font-bold text-white mb-2">Deje de adivinar.</h4>
+                <p class="text-xl text-gray-200">
+                    Nuestra plataforma le dice <span class="text-industrial-accent font-semibold">qué</span> está fallando, <span class="text-industrial-accent font-semibold">por qué</span> y <span class="text-industrial-accent font-semibold">cuán crítico</span> es.
+                </p>
+            </div>
+        </div>
     </section>
-    <section id="contact" style="margin-bottom: 80px;">
-        <h2>Contacto</h2>
-        <p>Email: <a href="mailto:galindbenjamin@gmail.com">galindbenjamin@gmail.com</a></p>
-        <p>Teléfono: +56951193701</p>
-        <button style="background-color: #25D366; border: none; padding: 10px 20px; border-radius: 5px; color: white; font-size: 16px;" 
-            onclick="window.open('https://wa.me/56951193701?text=Hola%20estoy%20interesado%20en%20sus%20servicios', '_blank')">
-            Chatea con Nosotros
-        </button>
+
+    <!-- Sección 4: Detalle de Servicios -->
+    <section id="servicios" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-industrial-blue-800 mb-4">Nuestros Servicios</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Diseñados para integrarse a su operación y entregar valor inmediato.</p>
+            </div>
+            
+            <div class="space-y-16">
+                <!-- Servicio 1: Alertas -->
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2">
+                        <div class="flex items-center justify-center w-20 h-20 bg-industrial-accent rounded-full mb-6">
+                            <i data-lucide="smartphone-charging" class="w-10 h-10 text-industrial-blue-900"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-industrial-blue-800 mb-4">1. Alertas Críticas Inteligentes</h3>
+                        <p class="text-gray-700 text-lg mb-4 leading-relaxed">
+                            No más "fatiga de alarmas". Nuestro motor de reglas filtra el ruido y solo le notifica (vía <strong>Email, WhatsApp o SMS</strong>) cuando una combinación de variables (ej. vibración y temperatura) indica un problema real e inminente.
+                        </p>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="https://placehold.co/600x400/2C3E50/F39C12?text=Notificaci%C3%B3n+en+M%C3%B3vil" alt="Alerta en teléfono móvil" class="rounded-lg shadow-2xl w-full">
+                    </div>
+                </div>
+
+                <!-- Servicio 2: IA -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+                    <div class="md:w-1/2">
+                        <div class="flex items-center justify-center w-20 h-20 bg-industrial-accent rounded-full mb-6">
+                            <i data-lucide="brain-circuit" class="w-10 h-10 text-industrial-blue-900"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-industrial-blue-800 mb-4">2. Diagnóstico de Fallas con IA</h3>
+                        <p class="text-gray-700 text-lg mb-4 leading-relaxed">
+                            No le damos solo un número, le damos un diagnóstico. Cuando una alerta es crítica, nuestro motor de IA la analiza en contexto con los datos históricos.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="bg-red-100 border-l-4 border-alert-critical p-4 rounded">
+                                <strong class="text-red-800">Mal:</strong> <span class="text-gray-700">`Alerta: TEMP_MOTOR_01 = 95°C`</span>
+                            </div>
+                            <div class="bg-green-100 border-l-4 border-green-500 p-4 rounded">
+                                <strong class="text-green-800">Bien:</strong> <span class="text-gray-700">`Alerta Crítica: TEMP_MOTOR_01 en 95°C. El historial muestra un alza sostenida de 20% en 4h, consistente con falla de rodamiento. Se recomienda inspección.`</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="https://placehold.co/600x400/34495E/FFFFFF?text=Dashboard+con+IA" alt="Dashboard con análisis de IA" class="rounded-lg shadow-2xl w-full">
+                    </div>
+                </div>
+
+                <!-- Servicio 3: Reportes PDF -->
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2">
+                        <div class="flex items-center justify-center w-20 h-20 bg-industrial-accent rounded-full mb-6">
+                            <i data-lucide="file-text" class="w-10 h-10 text-industrial-blue-900"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-industrial-blue-800 mb-4">3. Reportes Ejecutivos en PDF</h3>
+                        <p class="text-gray-700 text-lg mb-4 leading-relaxed">
+                            Ahorre horas de trabajo administrativo. Reciba en su email informes diarios, semanales o mensuales listos para presentar a gerencia.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 text-lg">
+                            <li>Resumen de salud de activos.</li>
+                            <li>Top 5 de alertas y micro-paradas.</li>
+                            <li>Análisis de tendencias de OEE.</li>
+                            <li>Historial de rendimiento.</li>
+                        </ul>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="https://placehold.co/600x400/ECF0F1/2C3E50?text=Ejemplo+Reporte+PDF" alt="Ejemplo de Reporte PDF" class="rounded-lg shadow-2xl w-full border-4 border-white">
+                    </div>
+                </div>
+
+                <!-- Servicio 4: Conexión OT/IT -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+                    <div class="md:w-1/2">
+                        <div class="flex items-center justify-center w-20 h-20 bg-industrial-accent rounded-full mb-6">
+                            <i data-lucide="shield-check" class="w-10 h-10 text-industrial-blue-900"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-industrial-blue-800 mb-4">4. Puente Seguro OT / IT</h3>
+                        <p class="text-gray-700 text-lg mb-4 leading-relaxed">
+                            Hablamos el idioma de su planta. Nos conectamos de forma segura a sus activos usando los protocolos que ya utiliza (OPC-UA, MQTT, Modbus TCP, o consultas a bases de datos Historian) sin comprometer la seguridad de su red de control.
+                        </Request>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="https://placehold.co/600x400/BDC3C7/2C3E50?text=Arquitectura+Segura+OT/IT" alt="Arquitectura de conexión segura" class="rounded-lg shadow-2xl w-full">
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </section>
-    <footer>
-        <p>&copy; 2025 Soluciones Industriales en la Nube. Todos los derechos reservados.</p>
+
+    <!-- Sección 5: ¿Cómo Funciona? -->
+    <section id="proceso" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-industrial-blue-800 mb-4">Implementación Simple y Segura</h2>
+            </div>
+            
+            <div class="relative grid md:grid-cols-3 gap-8">
+                <!-- Línea de conexión (para escritorio) -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 border-t-2 border-dashed border-industrial-accent" style="transform: translateY(-50%); z-index: 0;"></div>
+
+                <!-- Paso 1 -->
+                <div class="relative z-10 bg-white p-8 rounded-lg shadow-xl border-2 border-gray-100 text-center">
+                    <div class="flex items-center justify-center w-16 h-16 bg-industrial-blue-800 text-white rounded-full mb-6 mx-auto">
+                        <span class="text-3xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-industrial-blue-800 mb-3">Conectar</h3>
+                    <p class="text-gray-700">
+                        Instalamos nuestro "Agente de Datos" (Data Agent) de forma segura en su red, que lee los *tags* que usted defina, o nos conectamos a su broker MQTT/OPC-UA.
+                    </p>
+                </div>
+                <!-- Paso 2 -->
+                <div class="relative z-10 bg-white p-8 rounded-lg shadow-xl border-2 border-gray-100 text-center">
+                    <div class="flex items-center justify-center w-16 h-16 bg-industrial-blue-800 text-white rounded-full mb-6 mx-auto">
+                        <span class="text-3xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-industrial-blue-800 mb-3">Analizar</h3>
+                    <p class="text-gray-700">
+                        Configuramos las reglas de negocio y los modelos de IA en nuestra plataforma en la nube (`Sentrix AI`) para que se ajusten a sus activos críticos.
+                    </loc>
+                </div>
+                <!-- Paso 3 -->
+                <div class="relative z-10 bg-white p-8 rounded-lg shadow-xl border-2 border-gray-100 text-center">
+                    <div class="flex items-center justify-center w-16 h-16 bg-industrial-blue-800 text-white rounded-full mb-6 mx-auto">
+                        <span class="text-3xl font-bold">3</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-industrial-blue-800 mb-3">Recibir Valor</h3>
+                    <p class="text-gray-700">
+                        Usted empieza a recibir alertas y reportes accionables desde el primer día, permitiendo un mantenimiento proactivo inmediato.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 6: ¿Para Quién Es Esto? -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-industrial-blue-800 mb-4">Creado por Ingenieros de Instrumentación para la Industria</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-10">
+                Entendemos la diferencia entre IT y OT (Tecnología Operacional). Esta no es una herramienta genérica de software; es una solución de mantenimiento industrial diseñada para:
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="bg-industrial-blue-light text-white font-semibold px-5 py-2 rounded-full text-lg">Jefes de Mantenimiento</span>
+                <span class="bg-industrial-blue-light text-white font-semibold px-5 py-2 rounded-full text-lg">Gerentes de Planta</span>
+                <span class="bg-industrial-blue-light text-white font-semibold px-5 py-2 rounded-full text-lg">Ingenieros de Confiabilidad</span>
+                <span class="bg-industrial-blue-light text-white font-semibold px-5 py-2 rounded-full text-lg">Equipos de Instrumentación</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 7: Llamada a la Acción Final (CTA) -->
+    <section id="demo" class="py-24 bg-industrial-blue-800 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-6">
+                Deje de Apagar Incendios.
+                <br>
+                Empiece a Prevenirlos.
+            </h2>
+            <p class="text-xl text-gray-200 mb-10 max-w-2xl mx-auto">
+                Vea cómo nuestra plataforma puede reducir sus paradas no planificadas y optimizar sus costos de mantenimiento.
+            </p>
+            <a href="mailto:contacto@sentrix.ai?subject=Solicitud de Demo - Sentrix AI" class="bg-industrial-accent text-industrial-blue-900 font-bold py-4 px-10 rounded-lg text-lg hover:bg-yellow-600 transition shadow-xl transform hover:scale-105">
+                Agendar mi Demo Personalizada
+            </a>
+            <p class="text-gray-300 mt-4 text-sm">Agende una demo gratuita y sin compromiso.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-industrial-blue-900 text-gray-300 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-xl font-bold">Sentrix AI</p>
+            <p class="mt-2 text-sm">
+                Un servicio de Sentrix Industrial
+            </p>
+            <p class="mt-4 text-xs">
+                &copy; 2024. Todos los derechos reservados.
+            </p>
+        </div>
     </footer>
+
+    <!-- Carga de Iconos (Lucide) - Movido aquí para asegurar la carga antes de la inicialización -->
+    <script src="https://unpkg.com/lucide@latest/dist/lucide.min.js"></script>
+
+KEy-Control:S
+    <!-- Script para inicializar los iconos -->
+    <script>
+        // Ahora que el script de Lucide está justo encima, podemos llamarlo directamente.
+        // El DOM está listo y la librería está cargada.
+        lucide.createIcons();
+    </script>
 </body>
 </html>
